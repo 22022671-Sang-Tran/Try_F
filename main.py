@@ -10,8 +10,8 @@ mp_hands = mp.solutions.hands
 cap = cv2.VideoCapture(0)
 with mp_hands.Hands(
     model_complexity=0,
-    min_detection_confidence=0.15,
-    min_tracking_confidence=0.15) as hands:
+    min_detection_confidence=0.01,
+    min_tracking_confidence=0.01) as hands:
     while cap.isOpened():
         success, image = cap.read()
         if not success:
@@ -54,7 +54,7 @@ with mp_hands.Hands(
                 angle = math.degrees(math.atan2(c[1]-b[1], c[0]-b[0]) - math.atan2(a[1]-b[1], a[0]-b[0]))
 
                 # Display the angle
-                cv2.putText(image, f"Angle: {angle:.2f} degrees", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                #cv2.putText(image, f"Angle: {angle:.2f} degrees", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
 
                 # Test conditions for each finger: Count is increased if finger is
